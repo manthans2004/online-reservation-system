@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Train Reservation</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-train"></i> Online Train Reservation</h1>
+      <p>Book your journey with ease</p>
+    </header>
+    
+    <div class="reservation-form">
+      <form id="reservationForm">
+        <div class="form-section">
+          <h3><i class="fas fa-user"></i> Passenger Details</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name*</label>
+              <input type="text" id="name" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" required placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone*</label>
+              <input type="tel" id="phone" required placeholder="+1 (123) 456-7890">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3><i class="fas fa-route"></i> Journey Details</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fromStation">From*</label>
+              <select id="fromStation" required>
+                <option value="">Select station</option>
+                <option value="Delhi">Delhi (DEL)</option>
+                <option value="Mumbai">Mumbai (CSTM)</option>
+                <option value="Chennai">Chennai (MAS)</option>
+                <option value="Bangalore">Bangalore (SBC)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="toStation">To*</label>
+              <select id="toStation" required>
+                <option value="">Select station</option>
+                <option value="Delhi">Delhi (DEL)</option>
+                <option value="Mumbai">Mumbai (CSTM)</option>
+                <option value="Chennai">Chennai (MAS)</option>
+                <option value="Bangalore">Bangalore (SBC)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="trainNumber">Train*</label>
+              <select id="trainNumber" required>
+                <option value="">Select train</option>
+                <option value="12001">12001 - Shatabdi Express (Delhi → Bhopal)</option>
+                <option value="12951">12951 - Mumbai Rajdhani (Mumbai → Delhi)</option>
+                <option value="12627">12627 - Karnataka Express (Delhi → Bangalore)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3><i class="fas fa-calendar-alt"></i> Travel Date</h3>
+          <div class="calendar-container">
+            <div class="calendar-header">
+              <button type="button" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+              <span id="currentMonth"></span>
+              <button type="button" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-grid" id="calendar"></div>
+          </div>
+          <div class="form-group time-selection">
+            <label for="timeSlot">Departure Time*</label>
+            <select id="timeSlot" required>
+              <option value="">Select date first</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3><i class="fas fa-cog"></i> Preferences</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="coachType">Class*</label>
+              <select id="coachType" required>
+                <option value="">Select class</option>
+                <option value="SL">Sleeper Class (SL)</option>
+                <option value="3A">AC 3-Tier (3A)</option>
+                <option value="2A">AC 2-Tier (2A)</option>
+                <option value="FC">First Class (FC)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="berth">Berth Preference</label>
+              <select id="berth">
+                <option value="">No preference</option>
+                <option value="Lower">Lower</option>
+                <option value="Middle">Middle</option>
+                <option value="Upper">Upper</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Special Requests</label>
+            <textarea id="notes" rows="3" placeholder="Wheelchair assistance, etc."></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-ticket-alt"></i> Book Ticket
+          </button>
+          <p class="required-note">* Required fields</p>
+        </div>
+      </form>
+
+      <div class="confirmation" id="confirmation" style="display: none;">
+        <div class="confirmation-icon"><i class="fas fa-check-circle"></i></div>
+        <h3>Ticket Booked Successfully!</h3>
+        <p>Thank you <span id="confirmName"></span>, your ticket is confirmed.</p>
+        <div class="confirmation-details">
+          <div class="route-display">
+            <span class="station" id="confirmFromStation"></span>
+            <i class="fas fa-arrow-right"></i>
+            <span class="station" id="confirmToStation"></span>
+          </div>
+          <p><strong>Train:</strong> <span id="confirmTrain"></span></p>
+          <p><strong>Date:</strong> <span id="confirmDate"></span></p>
+          <p><strong>Time:</strong> <span id="confirmTime"></span></p>
+          <p><strong>Class/Berth:</strong> <span id="confirmBerth"></span></p>
+          <p><strong>PNR Number:</strong> <span id="confirmRef"></span></p>
+        </div>
+        <button class="print-btn" onclick="window.print()">
+          <i class="fas fa-print"></i> Print Ticket
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
